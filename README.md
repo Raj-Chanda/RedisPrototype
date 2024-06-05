@@ -9,6 +9,7 @@ This is a simple redis prototype application demonstrating the actual implementa
 
 ### Endpoints
 **[POST]** https://localhost:44388/api/Trucks/Save
+
 **Request Body:**
 ```
 {
