@@ -19,15 +19,15 @@ This is a simple redis prototype application demonstrating the actual implementa
 }
 ```
 
-**[GET]** https://localhost:44388/api/Trucks/`{Id}`
+**[GET]** https://localhost:44388/api/Trucks/{Id}
 
 here `Id` is trucke Id which is a guid.
 
-**[GET]** https://localhost:44388/api/Trucks/GetFromDB/`{Id}`
+**[GET]** https://localhost:44388/api/Trucks/GetFromDB/{Id}
 
 here `Id` is trucke Id which is a guid.
 
-**[GET]** https://localhost:44388/api/Trucks/GetFromCache/`{Id}`
+**[GET]** https://localhost:44388/api/Trucks/GetFromCache/{Id}
 
 here `Id` is trucke Id which is a guid.
 
