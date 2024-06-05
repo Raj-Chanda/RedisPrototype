@@ -8,8 +8,8 @@ namespace RedisPrototype.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<Truck> builder)
         {
-            //builder.ToTable("Truck", "unit");
-            builder.ToTable("Truck");
+            builder.ToTable("Truck", "dbo");
+            //builder.ToTable("Truck");
         }
     }
 }

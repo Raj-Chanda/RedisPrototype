@@ -1,7 +1,4 @@
-﻿using RedisPrototype.Domain;
-using RedisPrototype.Enums;
-
-namespace RedisPrototype.Models
+﻿namespace RedisPrototype.Models
 {
     public class ResponseMessage<T> where T : class
     {

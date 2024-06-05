@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using RedisPrototype.Infrastructure;
 using RedisPrototype.Services;
 
@@ -17,9 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RedisDBContext>(options => options.UseSqlServer(configurationManager.GetConnectionString("ConnStr")));
 builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = configurationManager["RedisCacheUrl"]; });
 
-//builder.Services.AddSingleton<IDBService, DBService>();
 builder.Services.AddScoped<IDBService, DBService>();
-//builder.Services.AddSingleton<IDBService>("DBService", new DBService());
 
 var app = builder.Build();
 

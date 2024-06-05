@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace RedisPrototype.Enums
+﻿namespace RedisPrototype.Enums
 {
     public enum OperationStatus
     {

@@ -29,17 +29,8 @@ namespace RedisPrototype.Services
         public async Task<Truck> GetAsync(Guid id)
         {
             var cacheKey = string.Format(CacheKey, id);
-            //var cacheOptions = new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = _redisSettings.Ttl };
             var truck = await GetOrAddAsync(cacheKey, () => GetByIdAsync(id), cacheOptions);
             return truck;
-
-            //var cacheResult = await GetFromCacheAsync(id);
-
-            //if (cacheResult == null)
-            //{
-            //    var cacheKey = string.Format(CacheKey, id);
-            //    var device = await GetOrAddAsync(cacheKey, () => GetByIdAsync(id), cacheOptions);
-            //}
         }
 
         public async Task<Truck> GetByIdAsync(Guid id)
@@ -66,12 +57,6 @@ namespace RedisPrototype.Services
             }
 
             return new ResponseMessage<Truck>() { Status = GetStatus(OperationStatus.NotFound), Message = "No data found.", Data = null, CacheKey = cacheKey };
-
-
-            ////var cacheOptions = new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = _redisSettings.Ttl };
-            //var device = await GetOrAddAsync(cacheKey, () => GetByIdAsync(id), cacheOptions);
-
-            //return device;
         }
 
 
@@ -113,34 +98,19 @@ namespace RedisPrototype.Services
             return isValid;
         }
 
-
         #region "Helper"
 
         public string GetStatus(OperationStatus status)
         {
             return Enum.GetName(typeof(OperationStatus), status);
-            //return status.ToString();
         }
 
         #endregion
-
 
         #region "RedisHelper"
 
         protected async Task<T?> GetOrAddAsync<T>(string key, Func<Task<T>> getDataAsync, DistributedCacheEntryOptions options)
         {
-            //var cacheResult = await _cache.GetAsync(key);
-            //if (cacheResult != null)
-            //{
-            //    return JsonSerializer.Deserialize<T>(Encoding.UTF8.GetString(cacheResult));
-            //}
-            //else
-            //{
-            //    var data = await getDataAsync();
-            //    await SetAsync(key, data, options);
-            //    return data;
-            //}
-
             var cacheResult = await GetAsync(key);
             if (cacheResult == null)
             {
@@ -157,8 +127,6 @@ namespace RedisPrototype.Services
             var cacheResult = await _cache.GetAsync(key);
             if (cacheResult != null)
             {
-                //return JsonSerializer.Deserialize<Truck>(Encoding.UTF8.GetString(cacheResult));
-
                 return Encoding.UTF8.GetString(cacheResult);
             }
 

@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RedisPrototype.Domain;
 using RedisPrototype.Enums;
 using RedisPrototype.Models;
-
-//using RedisPrototype.Models;
 using RedisPrototype.Services;
-using System.Threading.Tasks;
 
 namespace RedisPrototype.Controllers
 {
@@ -25,8 +21,6 @@ namespace RedisPrototype.Controllers
         {
             var result = _service.GetAsync(id);
             return await result;
-
-            //return await Task.FromResult(new Truck());
         }
 
         [HttpGet("GetFromDB/{id}")]
@@ -34,18 +28,13 @@ namespace RedisPrototype.Controllers
         {
             var result = _service.GetFromDBAsync(id);
             return await result;
-
-            //return await Task.FromResult(new Truck());
         }
 
         [HttpGet("GetFromCache/{id}")]
-        //public async Task<ActionResult<Truck>> GetFromCacheAsync(Guid id)
         public async Task<ActionResult<ResponseMessage<Truck>>> GetFromCacheAsync(Guid id)
         {
             var result = _service.GetFromCacheAsync(id);
             return await result;
-
-            //return await Task.FromResult(new Truck());
         }
 
         [HttpPost("Save")]
@@ -61,7 +50,5 @@ namespace RedisPrototype.Controllers
                 return new ResponseMessage<Truck>() { Status = _service.GetStatus(OperationStatus.InvalidData), Message = "Invalid Data" };
             }
         }
-
-
     }
 }
