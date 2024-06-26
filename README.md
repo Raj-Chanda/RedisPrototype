@@ -35,3 +35,13 @@ here `Id` is trucke Id which is a guid.
 ### How to setup Database
 To create database and table run sql scripts located at location 
 RedisPrototype -> DB Files -> sql scripts(create DataBase & Table)
+
+### Setup development environment with Docker compose
+To setup development environment in docker use the below command
+
+`docker-compose up -d`
+
+This docker compose contain the following:
+
+1. SQL Server 2022
+2. Redis
