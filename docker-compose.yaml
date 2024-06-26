@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  mssql:
+    container_name: "sqlserver2022"
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=India@#123456789
+    ports:
+      - '1433:1433'
+  redis:
+    container_name: "redis"
+    image: redis:latest
+    ports:
+      - '6379:6379'
